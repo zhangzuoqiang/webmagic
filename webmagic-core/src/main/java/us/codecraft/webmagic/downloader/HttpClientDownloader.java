@@ -7,7 +7,6 @@ import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.annotation.ThreadSafe;
-import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -140,7 +139,7 @@ public class HttpClientDownloader extends AbstractDownloader {
                 .setConnectionRequestTimeout(site.getTimeOut())
                 .setSocketTimeout(site.getTimeOut())
                 .setConnectTimeout(site.getTimeOut())
-                .setCookieSpec(CookieSpecs.BEST_MATCH);
+                .setCookieSpec(site.getCookieSpec());
         if (site.getHttpProxyPool() != null && site.getHttpProxyPool().isEnable()) {
             HttpHost host = site.getHttpProxyFromPool();
 			requestConfigBuilder.setProxy(host);

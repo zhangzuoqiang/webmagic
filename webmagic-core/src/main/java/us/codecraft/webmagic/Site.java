@@ -3,7 +3,7 @@ package us.codecraft.webmagic;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.apache.http.HttpHost;
-
+import org.apache.http.client.config.CookieSpecs;
 import us.codecraft.webmagic.proxy.ProxyPool;
 import us.codecraft.webmagic.utils.UrlUtils;
 
@@ -42,6 +42,8 @@ public class Site {
     private int retrySleepTime = 1000;
 
     private int timeOut = 5000;
+
+    private String cookieSpec = CookieSpecs.BEST_MATCH;
 
     private static final Set<Integer> DEFAULT_STATUS_CODE_SET = new HashSet<Integer>();
 
@@ -193,6 +195,15 @@ public class Site {
      */
     public Site setTimeOut(int timeOut) {
         this.timeOut = timeOut;
+        return this;
+    }
+
+    public String getCookieSpec() {
+        return cookieSpec;
+    }
+
+    public Site setCookieSpec(String cookieSpec) {
+        this.cookieSpec = cookieSpec;
         return this;
     }
 
